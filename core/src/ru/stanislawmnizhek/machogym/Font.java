@@ -1,4 +1,4 @@
-package tk.kosmodoom;
+package ru.stanislawmnizhek.machogym;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
