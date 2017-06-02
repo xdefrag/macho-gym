@@ -7,13 +7,16 @@ import com.badlogic.gdx.math.Intersector;
 
 public class Player extends Macho {
     private int life;
+    private boolean isDamaged = false;
     private Config config;
     private Assets assets;
+    private float damagedTimer;
     public Animation<TextureRegion> playerIdleAnimation;
     public Animation<TextureRegion> playerUpAnimation;
     public Animation<TextureRegion> playerDownAnimation;
     public Animation<TextureRegion> playerLeftAnimation;
     public Animation<TextureRegion> playerRightAnimation;
+    public Animation<TextureRegion> playerDamaged;
 
     public Player(Assets assets, Config config) {
         super(config);
@@ -29,10 +32,15 @@ public class Player extends Macho {
         playerDownAnimation = new Animation<>(0.35f, assets.getTexture("player_down"));
         playerLeftAnimation = new Animation<>(0.35f, assets.getTexture("player_left"));
         playerRightAnimation = new Animation<>(0.35f, assets.getTexture("player_right"));
+        playerDamaged = new Animation<>(0.35f, assets.getTexture("player_oops"));
     }
 
     public Animation<TextureRegion> getAnimation(Control control) {
         Animation<TextureRegion> currentAnimation;
+
+        if (isDamaged) {
+            return playerDamaged;
+        }
 
         if (control.getDirection().equals(control.UP)) {
             currentAnimation = playerUpAnimation;
@@ -58,10 +66,26 @@ public class Player extends Macho {
     }
 
     public void removeOneLife() {
-        life--;
+        if (!isDamaged) {
+            life--;
+            isDamaged = true;
+        }
+    }
+
+    public boolean isDamaged() {
+        return isDamaged;
+    }
+
+    public void damagedTimeout(float delta) {
+        damagedTimer += delta;
+
+        if (damagedTimer > 2f) {
+            isDamaged = false;
+            damagedTimer = 0;
+        }
     }
 
     public boolean isPlayerDead() {
-        return life == 0;
+        return life == 0 && !isDamaged;
     }
 }

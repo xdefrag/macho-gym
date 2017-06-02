@@ -88,7 +88,7 @@ public class GameScreen implements Screen {
         player.checkXY();
 
         for (Enemy enemy : enemies) {
-            if (player.isCollidesWith(enemy)) {
+            if (player.isCollidesWith(enemy) && !player.isDamaged()) {
                 player.removeOneLife();
                 enemy.setX(
                         random.nextInt(game.config.width + 1)
@@ -114,6 +114,10 @@ public class GameScreen implements Screen {
         if ((game.score != 0) && (0 == (game.score % 5))) {
             game.score = game.score + 1;
             enemies.add(new Enemy(game.assets, game.config));
+        }
+
+        if (player.isDamaged()) {
+            player.damagedTimeout(delta);
         }
     }
 

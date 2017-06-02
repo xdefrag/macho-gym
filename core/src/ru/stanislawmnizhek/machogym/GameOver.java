@@ -27,7 +27,7 @@ public class GameOver implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
         game.bg.drawBackground(game.batch, delta);
-        game.font.draw(game.batch, "You has been touched!", game.config.width / 2, game.config.height / 2 + 20);
+        game.font.draw(game.batch, "Game over", game.config.width / 2, game.config.height / 2 + 20);
         game.font.draw(game.batch, "Score " + game.score, game.config.width / 2, game.config.height / 2);
         game.batch.end();
 
