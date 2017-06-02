@@ -12,6 +12,7 @@ public class GameOver implements Screen {
     OrthographicCamera camera;
     private GlyphLayout layoutInfo;
     private GlyphLayout layoutScore;
+    private GlyphLayout layoutPress;
 
     public GameOver(MachoGym game) {
         this.game = game;
@@ -23,6 +24,7 @@ public class GameOver implements Screen {
 
         layoutInfo = new GlyphLayout(game.font, "YOU  WERE  TOUCHED");
         layoutScore = new GlyphLayout(game.font, "Score  " + game.score);
+        layoutPress = new GlyphLayout(game.font, "Press  start  to  workout  again");
     }
 
     @Override
@@ -37,6 +39,7 @@ public class GameOver implements Screen {
         game.bg.drawBackground(game.batch, delta);
         game.font.draw(game.batch, layoutInfo, (game.config.width - layoutInfo.width) / 2, game.config.height / 2 + 20);
         game.font.draw(game.batch, layoutScore, (game.config.width - layoutScore.width) / 2, game.config.height / 2);
+        game.font.draw(game.batch, layoutPress, (game.config.width - layoutPress.width) / 2, game.config.height / 2 - 20);
         game.batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || Gdx.input.isKeyPressed(Input.Keys.SPACE)) {

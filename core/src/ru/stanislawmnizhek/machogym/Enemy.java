@@ -15,9 +15,11 @@ public class Enemy extends Macho {
     private Animation<TextureRegion> enemyDownAnimation;
     private Animation<TextureRegion> enemyLeftAnimation;
     private Animation<TextureRegion> enemyRightAnimation;
+    private Animation<TextureRegion> enemyHappyAnimation;
     private Animation<TextureRegion> currentAnimation;
     private int xRandom;
     private int yRandom;
+    private boolean isHappy = false;
 
     public Enemy(Assets assets, Config config) {
         super(config);
@@ -42,13 +44,14 @@ public class Enemy extends Macho {
         enemyDownAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_down"));
         enemyLeftAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_left"));
         enemyRightAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_right"));
+        enemyHappyAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_happy"));
     }
 
     public Animation<TextureRegion> getAnimation() {
         if (currentAnimation == null) {
             currentAnimation = enemyIdleAnimation;
         }
-        return currentAnimation;
+        return isHappy ? enemyHappyAnimation : currentAnimation;
     }
 
     public void handleRandomMoving(float delta) {
@@ -76,5 +79,9 @@ public class Enemy extends Macho {
         this.machoRect.y += yRandom;
 
         if (timer >= 1f) timer -= 1f;
+    }
+
+    public void setHappy(boolean isHappy) {
+        this.isHappy = isHappy;
     }
 }

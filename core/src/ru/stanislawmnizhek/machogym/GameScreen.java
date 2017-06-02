@@ -20,6 +20,7 @@ public class GameScreen implements Screen {
     private Array<Coin> coins = new Array<Coin>();
     private float elapsedTime = 0;
     private FitViewport viewport;
+    private boolean isPlayerDefeated = false;
 
     public GameScreen(final MachoGym game) {
         this.game = game;
@@ -69,6 +70,9 @@ public class GameScreen implements Screen {
                 player.getX(), player.getY()
         );
         for (final Enemy enemy : enemies) {
+            if (isPlayerDefeated) {
+                enemy.setHappy(true);
+            }
             game.batch.draw(enemy.getAnimation().getKeyFrame(elapsedTime, true),
                     enemy.getX(), enemy.getY());
         }
@@ -101,8 +105,7 @@ public class GameScreen implements Screen {
                 game.sounds.touched.play();
                 player.removeOneLife();
                 if (player.getLifeAmount() == 0) {
-                    game.sounds.machogym.stop();
-                    coins = new Array<Coin>();
+                    playerDefeated();
                 }
                 enemy.setX(
                         random.nextInt(game.config.width + 1)
@@ -135,6 +138,12 @@ public class GameScreen implements Screen {
         if (player.isDamaged()) {
             player.damagedTimeout(delta);
         }
+    }
+
+    private void playerDefeated() {
+        game.sounds.machogym.stop();
+        coins = new Array<Coin>();
+        isPlayerDefeated = true;
     }
 
     @Override

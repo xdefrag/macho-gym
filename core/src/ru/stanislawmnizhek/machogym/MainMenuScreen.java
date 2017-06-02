@@ -5,12 +5,15 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class MainMenuScreen implements Screen {
     final MachoGym game;
     OrthographicCamera camera;
-    private GlyphLayout layoutTitle;
+//    private GlyphLayout layoutTitle;
+    private Animation<TextureRegion> logo;
     private GlyphLayout layoutInfo;
 
     public MainMenuScreen(final MachoGym game) {
@@ -19,7 +22,8 @@ public class MainMenuScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, game.config.width, game.config.height);
 
-        layoutTitle = new GlyphLayout(game.font, "MACHO  MACHO  GYM");
+//        layoutTitle = new GlyphLayout(game.font, "MACHO  MACHO  GYM");
+        logo = new Animation<TextureRegion>(0, game.assets.getTexture("logo"));
         layoutInfo = new GlyphLayout(game.font, "PRESS  START");
     }
 
@@ -33,7 +37,8 @@ public class MainMenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
         game.bg.drawBackground(game.batch, delta);
-        game.font.draw(game.batch, layoutTitle, (game.config.width - layoutTitle.width) / 2, game.config.height / 2 + 20);
+//        game.font.draw(game.batch, layoutTitle, (game.config.width - layoutTitle.width) / 2, game.config.height / 2 + 20);
+        game.batch.draw(logo.getKeyFrame(delta), game.config.width / 2 - 114, game.config.height / 2 + 20);
         game.font.draw(game.batch, layoutInfo, (game.config.width - layoutInfo.width) / 2, game.config.height / 2);
         game.batch.end();
 
