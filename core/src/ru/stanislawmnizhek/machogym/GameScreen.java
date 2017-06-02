@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import java.util.Random;
 
@@ -15,9 +16,10 @@ public class GameScreen implements Screen {
     private Control control;
     private OrthographicCamera camera;
     private Player player;
-    private Array<Enemy> enemies = new Array<>();
-    private Array<Coin> coins = new Array<>();
+    private Array<Enemy> enemies = new Array<Enemy>();
+    private Array<Coin> coins = new Array<Coin>();
     private float elapsedTime = 0;
+    private FitViewport viewport;
 
     public GameScreen(final MachoGym game) {
         this.game = game;
@@ -25,6 +27,7 @@ public class GameScreen implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, game.config.width, game.config.height);
+        viewport = new FitViewport(game.config.width, game.config.height, camera);
 
         player = new Player(game.assets, game.config);
         control = new Control(game.config);
@@ -34,6 +37,11 @@ public class GameScreen implements Screen {
         for (int i = 0; i < 5; i = i + 1) {
             coins.add(new Coin(game.assets, game.config));
         }
+
+        game.sounds.machogym.setLooping(true);
+        game.sounds.machogym.play();
+
+        resize(game.config.width, game.config.height);
     }
 
     @Override
@@ -70,8 +78,8 @@ public class GameScreen implements Screen {
         }
 
         // UI
-        game.font.draw(game.batch, "score " + game.score, 10, game.config.height - 10);
-        game.font.draw(game.batch, "life: " + player.getLifeAmount(), 10, game.config.height - 20);
+        game.font.draw(game.batch, "score  " + game.score, 10, game.config.height - 10);
+        game.font.draw(game.batch, "life  " + player.getLifeAmount(), 10, game.config.height - 20);
         game.batch.end();
 
 
@@ -89,7 +97,13 @@ public class GameScreen implements Screen {
 
         for (Enemy enemy : enemies) {
             if (player.isCollidesWith(enemy) && !player.isDamaged()) {
+                game.sounds.touched.stop();
+                game.sounds.touched.play();
                 player.removeOneLife();
+                if (player.getLifeAmount() == 0) {
+                    game.sounds.machogym.stop();
+                    coins = new Array<Coin>();
+                }
                 enemy.setX(
                         random.nextInt(game.config.width + 1)
                 );
@@ -101,6 +115,8 @@ public class GameScreen implements Screen {
 
         for (Coin coin : coins) {
             if (player.isCollidesWith(coin)) {
+                game.sounds.power.stop();
+                game.sounds.power.play();
                 game.score = game.score + 1;
                 coin.setX(
                         random.nextInt(game.config.width + 1)
@@ -143,7 +159,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        viewport.update(width, height, true);
     }
 
     @Override

@@ -27,12 +27,12 @@ public class Player extends Macho {
     }
 
     private void initAssets() {
-        playerIdleAnimation = new Animation<>(0.35f, assets.getTexture("player_idle"));
-        playerUpAnimation = new Animation<>(0.35f, assets.getTexture("player_up"));
-        playerDownAnimation = new Animation<>(0.35f, assets.getTexture("player_down"));
-        playerLeftAnimation = new Animation<>(0.35f, assets.getTexture("player_left"));
-        playerRightAnimation = new Animation<>(0.35f, assets.getTexture("player_right"));
-        playerDamaged = new Animation<>(0.35f, assets.getTexture("player_oops"));
+        playerIdleAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("player_idle"));
+        playerUpAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("player_up"));
+        playerDownAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("player_down"));
+        playerLeftAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("player_left"));
+        playerRightAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("player_right"));
+        playerDamaged = new Animation<TextureRegion>(0.35f, assets.getTexture("player_oops"));
     }
 
     public Animation<TextureRegion> getAnimation(Control control) {

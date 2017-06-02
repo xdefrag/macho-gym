@@ -17,6 +17,10 @@ public class Control {
     }
 
     public void handleInput(Player player, float delta) {
+        if (player.getLifeAmount() == 0) {
+            return;
+        }
+
         float x = player.getX();
         float y = player.getY();
         direction = IDLE;

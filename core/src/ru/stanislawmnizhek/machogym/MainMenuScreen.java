@@ -5,16 +5,22 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
 public class MainMenuScreen implements Screen {
     final MachoGym game;
     OrthographicCamera camera;
+    private GlyphLayout layoutTitle;
+    private GlyphLayout layoutInfo;
 
     public MainMenuScreen(final MachoGym game) {
         this.game = game;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, game.config.width, game.config.height);
+
+        layoutTitle = new GlyphLayout(game.font, "MACHO  MACHO  GYM");
+        layoutInfo = new GlyphLayout(game.font, "PRESS  START");
     }
 
     @Override
@@ -27,11 +33,12 @@ public class MainMenuScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
         game.bg.drawBackground(game.batch, delta);
-        game.font.draw(game.batch, "MACHO MACHO GYM", game.config.width / 2, game.config.height / 2 + 20);
-        game.font.draw(game.batch, "PRESS START", game.config.width / 2, game.config.height / 2);
+        game.font.draw(game.batch, layoutTitle, (game.config.width - layoutTitle.width) / 2, game.config.height / 2 + 20);
+        game.font.draw(game.batch, layoutInfo, (game.config.width - layoutInfo.width) / 2, game.config.height / 2);
         game.batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            game.sounds.start.play();
             game.setScreen(new GameScreen(game));
             dispose();
         }
