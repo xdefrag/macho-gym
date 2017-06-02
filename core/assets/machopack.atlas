@@ -6,273 +6,287 @@ filter: Nearest,Nearest
 repeat: none
 asters_layer1
   rotate: false
-  xy: 287, 681
+  xy: 287, 830
   size: 262, 192
   orig: 262, 192
   offset: 0, 0
   index: -1
 asters_layer2
   rotate: false
-  xy: 2, 169
+  xy: 739, 876
   size: 112, 103
   orig: 112, 103
   offset: 0, 0
   index: -1
+dead screen
+  rotate: false
+  xy: 739, 981
+  size: 269, 41
+  orig: 271, 43
+  offset: 1, 1
+  index: -1
 enemy_down
   rotate: false
-  xy: 807, 841
+  xy: 36, 308
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 enemy_down
   rotate: false
-  xy: 2, 67
+  xy: 853, 913
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 enemy_happy
   rotate: false
-  xy: 116, 172
+  xy: 36, 274
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 enemy_happy
   rotate: false
-  xy: 150, 206
+  xy: 70, 308
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 enemy_idle
   rotate: false
-  xy: 116, 206
+  xy: 887, 913
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 enemy_idle
   rotate: false
-  xy: 150, 240
+  xy: 36, 206
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 enemy_left
   rotate: false
-  xy: 841, 842
+  xy: 2, 139
   size: 32, 31
   orig: 32, 31
   offset: 0, 0
-  index: 2
+  index: 1
 enemy_left
   rotate: false
-  xy: 2, 34
+  xy: 36, 173
+  size: 32, 31
+  orig: 32, 31
+  offset: 0, 0
+  index: 2
+enemy_right
+  rotate: false
+  xy: 138, 309
   size: 32, 31
   orig: 32, 31
   offset: 0, 0
   index: 1
 enemy_right
   rotate: false
-  xy: 150, 173
-  size: 32, 31
-  orig: 32, 31
-  offset: 0, 0
-  index: 1
-enemy_right
-  rotate: false
-  xy: 184, 207
+  xy: 921, 880
   size: 32, 31
   orig: 32, 31
   offset: 0, 0
   index: 2
 enemy_up
   rotate: false
-  xy: 36, 68
+  xy: 70, 241
   size: 32, 31
   orig: 32, 31
   offset: 0, 0
   index: 1
 enemy_up
   rotate: false
-  xy: 70, 102
+  xy: 104, 275
   size: 32, 31
   orig: 32, 31
   offset: 0, 0
   index: 2
+main_screen
+  rotate: false
+  xy: 2, 342
+  size: 225, 79
+  orig: 227, 80
+  offset: 1, 0
+  index: -1
 meteors_layer1
   rotate: false
-  xy: 551, 707
+  xy: 551, 856
   size: 186, 166
   orig: 186, 166
   offset: 0, 0
   index: -1
 planet
   rotate: false
-  xy: 739, 841
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 1
-planet
-  rotate: false
-  xy: 2, 135
+  xy: 70, 274
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 planet
   rotate: false
-  xy: 773, 841
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 5
-planet
-  rotate: false
-  xy: 2, 101
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 6
-planet
-  rotate: false
-  xy: 773, 807
+  xy: 104, 308
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
 planet
   rotate: false
-  xy: 739, 739
+  xy: 887, 879
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 4
+planet
+  rotate: false
+  xy: 921, 913
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 5
+planet
+  rotate: false
+  xy: 955, 947
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 6
+planet
+  rotate: false
+  xy: 2, 172
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
 player_down
   rotate: false
-  xy: 739, 807
+  xy: 2, 308
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player_down
+  rotate: false
+  xy: 853, 879
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
-player_down
+player_idle
   rotate: false
-  xy: 773, 773
+  xy: 921, 947
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 player_idle
   rotate: false
-  xy: 739, 773
+  xy: 2, 206
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
-player_idle
+player_left
   rotate: false
-  xy: 184, 240
+  xy: 853, 947
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 player_left
   rotate: false
-  xy: 116, 240
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 1
-player_left
-  rotate: false
-  xy: 70, 135
+  xy: 2, 274
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 player_oops
   rotate: false
-  xy: 258, 430
+  xy: 258, 579
   size: 20, 32
   orig: 20, 32
   offset: 0, 0
   index: -1
 player_right
   rotate: false
-  xy: 36, 135
+  xy: 887, 947
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 player_right
   rotate: false
-  xy: 36, 101
+  xy: 2, 240
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 player_up
   rotate: false
-  xy: 807, 807
+  xy: 36, 240
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 player_up
   rotate: false
-  xy: 218, 241
+  xy: 955, 914
   size: 32, 31
   orig: 32, 31
   offset: 0, 0
   index: 1
 protein_icon
   rotate: false
-  xy: 287, 672
+  xy: 287, 821
   size: 16, 7
   orig: 16, 7
   offset: 0, 0
   index: -1
 protein
   rotate: false
-  xy: 287, 672
+  xy: 287, 821
   size: 16, 7
   orig: 16, 7
   offset: 0, 0
   index: -1
 stars_layer1
   rotate: false
-  xy: 2, 274
+  xy: 2, 423
   size: 254, 188
   orig: 254, 188
   offset: 0, 0
   index: -1
 stars_layer2
   rotate: false
-  xy: 2, 464
+  xy: 2, 613
   size: 279, 192
   orig: 279, 192
   offset: 0, 0
   index: -1
 stars_layer3
   rotate: false
-  xy: 2, 658
+  xy: 2, 807
   size: 283, 215
   orig: 283, 215
   offset: 0, 0
   index: -1
 vrag_icon
   rotate: false
-  xy: 551, 695
+  xy: 1010, 1012
   size: 12, 10
   orig: 12, 10
   offset: 0, 0
   index: -1
 enemy_icon
   rotate: false
-  xy: 551, 695
+  xy: 1010, 1012
   size: 12, 10
   orig: 12, 10
   offset: 0, 0
