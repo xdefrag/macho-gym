@@ -1,6 +1,5 @@
 package ru.stanislawmnizhek.machogym;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -20,8 +19,10 @@ public class Enemy extends Macho {
     private int xRandom;
     private int yRandom;
 
-    public Enemy() {
-        assets = new Assets();
+    public Enemy(Assets assets, Config config) {
+        super(config);
+        this.config = config;
+        this.assets = assets;
         initAssets();
     }
 
@@ -29,7 +30,7 @@ public class Enemy extends Macho {
     protected void initRect() {
         random = new Random();
         this.machoRect = new Rectangle();
-        this.machoRect.x = random.nextInt(this.config.width);
+        this.machoRect.x = 0;
         this.machoRect.y = random.nextInt(this.config.height);
         this.machoRect.width = this.config.spriteRes;
         this.machoRect.height = this.config.spriteRes;

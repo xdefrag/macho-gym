@@ -10,8 +10,9 @@ public class Coin extends Macho {
     private Animation<TextureRegion> coin;
     private Assets assets;
 
-    public Coin() {
-        assets = new Assets();
+    public Coin(Assets assets, Config config) {
+        super(config);
+        this.assets = assets;
         initAssets();
     }
 

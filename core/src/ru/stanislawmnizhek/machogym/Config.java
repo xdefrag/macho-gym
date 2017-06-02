@@ -6,5 +6,4 @@ public class Config {
     public final int spriteRes = 32;
     public final int movementStep = 100;
     public final int lifeAmount = 3;
-    public final int collisionRes = 24;
 }

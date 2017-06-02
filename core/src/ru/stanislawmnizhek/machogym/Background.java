@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.util.Random;
 
 public class Background {
-    private Assets assets;
-    private Config config;
+    final MachoGym game;
+
     private Random random;
 //    private Animation<TextureRegion> astersLayer1;
 //    private Animation<TextureRegion> astersLayer2;
@@ -24,22 +24,22 @@ public class Background {
     private int starsX = 0;
     private int starsY = 0;
 
-    public Background() {
-        config = new Config();
+    public Background(MachoGym game) {
+        this.game = game;
+
         random = new Random();
         initAssets();
-        planetY = random.nextInt(config.height);
+        planetY = random.nextInt(game.config.height);
     }
 
     private void initAssets() {
-        assets = new Assets();
 //        astersLayer1 = new Animation<TextureRegion>(0, assets.getTexture("asters_layer1"));
 //        astersLayer2 = new Animation<TextureRegion>(0, assets.getTexture("asters_layer2"));
 //        meteors = new Animation<TextureRegion>(0, assets.getTexture("meteors"));
-        planet = new Animation<TextureRegion>(0.33f, assets.getTexture("planet"));
-        starsLayer1 = new Animation<TextureRegion>(0, assets.getTexture("stars_layer1"));
-        starsLayer2 = new Animation<TextureRegion>(0, assets.getTexture("stars_layer2"));
-        starsLayer3 = new Animation<TextureRegion>(0, assets.getTexture("stars_layer3"));
+        planet = new Animation<TextureRegion>(0.33f, game.assets.getTexture("planet"));
+        starsLayer1 = new Animation<TextureRegion>(0, game.assets.getTexture("stars_layer1"));
+        starsLayer2 = new Animation<TextureRegion>(0, game.assets.getTexture("stars_layer2"));
+        starsLayer3 = new Animation<TextureRegion>(0, game.assets.getTexture("stars_layer3"));
     }
 
     public void drawBackground(SpriteBatch batch, float delta) {
@@ -88,9 +88,9 @@ public class Background {
                 planetX -= 1;
             }
 
-            if (planetX > config.width + config.spriteRes || planetX < 0 - config.spriteRes) {
+            if (planetX > game.config.width + game.config.spriteRes || planetX < 0 - game.config.spriteRes) {
                 planetTimer = 0f;
-                planetY = random.nextInt(config.height);
+                planetY = random.nextInt(game.config.height);
                 isPlanetDirectionRight = !isPlanetDirectionRight;
             }
         }

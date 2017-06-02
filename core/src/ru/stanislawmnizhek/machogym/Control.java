@@ -12,8 +12,8 @@ public class Control {
     public final String IDLE = "idle";
     private String direction = IDLE;
 
-    public Control() {
-        config = new Config();
+    public Control(Config config) {
+        this.config = config;
     }
 
     public void handleInput(Player player, float delta) {

@@ -2,13 +2,10 @@ package ru.stanislawmnizhek.machogym;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.g3d.model.Animation;
 import com.badlogic.gdx.utils.Array;
 
 public class Assets {
     private TextureAtlas atlas;
-    private Animation animation;
 
     public Assets() {
         if (atlas == null) {

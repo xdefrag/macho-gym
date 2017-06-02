@@ -2,24 +2,28 @@ package ru.stanislawmnizhek.machogym;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Intersector;
 
 
 public class Player extends Macho {
-    private Assets assets;
     private int life;
+    private Config config;
+    private Assets assets;
     public Animation<TextureRegion> playerIdleAnimation;
     public Animation<TextureRegion> playerUpAnimation;
     public Animation<TextureRegion> playerDownAnimation;
     public Animation<TextureRegion> playerLeftAnimation;
     public Animation<TextureRegion> playerRightAnimation;
 
-    public Player() {
+    public Player(Assets assets, Config config) {
+        super(config);
+        this.config = config;
+        this.assets = assets;
         initAssets();
         life = this.config.lifeAmount;
     }
 
     private void initAssets() {
-        assets = new Assets();
         playerIdleAnimation = new Animation<>(0.35f, assets.getTexture("player_idle"));
         playerUpAnimation = new Animation<>(0.35f, assets.getTexture("player_up"));
         playerDownAnimation = new Animation<>(0.35f, assets.getTexture("player_down"));
@@ -46,11 +50,7 @@ public class Player extends Macho {
     }
 
     public boolean isCollidesWith(Macho obj) {
-        if (Math.abs(this.machoRect.y - obj.getY()) < config.collisionRes
-                && Math.abs(this.machoRect.x - obj.getX()) < config.collisionRes) {
-            return true;
-        }
-        return false;
+        return Intersector.overlaps(this.machoRect, obj.getMachoRect());
     }
 
     public int getLifeAmount() {

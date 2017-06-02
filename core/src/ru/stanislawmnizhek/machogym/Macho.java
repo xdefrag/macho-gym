@@ -6,8 +6,8 @@ public class Macho {
     protected Rectangle machoRect;
     protected Config config;
 
-    public Macho() {
-        config = new Config();
+    public Macho(Config config) {
+        this.config = config;
         initRect();
     }
 
@@ -40,6 +40,10 @@ public class Macho {
 
     public void setY(float y) {
         machoRect.y = y;
+    }
+
+    public Rectangle getMachoRect() {
+        return this.machoRect;
     }
 
     public void dispose() {
