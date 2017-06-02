@@ -37,11 +37,11 @@ public class Enemy extends Macho {
     }
 
     private void initAssets() {
-        enemyIdleAnimation = new Animation<>(0.35f, assets.getTexture("enemy_idle"));
-        enemyUpAnimation = new Animation<>(0.35f, assets.getTexture("enemy_up"));
-        enemyDownAnimation = new Animation<>(0.35f, assets.getTexture("enemy_down"));
-        enemyLeftAnimation = new Animation<>(0.35f, assets.getTexture("enemy_left"));
-        enemyRightAnimation = new Animation<>(0.35f, assets.getTexture("enemy_right"));
+        enemyIdleAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_idle"));
+        enemyUpAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_up"));
+        enemyDownAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_down"));
+        enemyLeftAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_left"));
+        enemyRightAnimation = new Animation<TextureRegion>(0.35f, assets.getTexture("enemy_right"));
     }
 
     public Animation<TextureRegion> getAnimation() {

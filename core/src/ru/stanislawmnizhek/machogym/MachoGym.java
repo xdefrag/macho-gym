@@ -10,6 +10,7 @@ public class MachoGym extends Game {
     public Config config;
     public Assets assets;
     public Background bg;
+    public Sounds sounds;
     public int score;
 
     public void create() {
@@ -18,6 +19,7 @@ public class MachoGym extends Game {
         config = new Config();
         assets = new Assets();
         bg = new Background(this);
+        sounds = new Sounds();
         score = 0;
         this.setScreen(new MainMenuScreen(this));
     }

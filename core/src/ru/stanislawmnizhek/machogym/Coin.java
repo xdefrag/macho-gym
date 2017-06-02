@@ -27,7 +27,7 @@ public class Coin extends Macho {
     }
 
     private void initAssets() {
-        coin = new Animation<>(0.35f, assets.getTexture("protein"));
+        coin = new Animation<TextureRegion>(0.35f, assets.getTexture("protein"));
     }
 
     public Animation<TextureRegion> getAnimation() {
