@@ -5,6 +5,12 @@ import com.badlogic.gdx.Input;
 
 public class Control {
     private Config config;
+    public final String UP = "up";
+    public final String DOWN = "down";
+    public final String LEFT = "left";
+    public final String RIGHT = "right";
+    public final String IDLE = "idle";
+    private String direction = IDLE;
 
     public Control() {
         config = new Config();
@@ -13,13 +19,26 @@ public class Control {
     public void handleInput(Player player, float delta) {
         float x = player.getX();
         float y = player.getY();
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
+        direction = IDLE;
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             player.setX(x -= config.movementStep * delta);
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+            direction = LEFT;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             player.setX(x += config.movementStep * delta);
-        if (Gdx.input.isKeyPressed(Input.Keys.UP))
+            direction = RIGHT;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             player.setY(y += config.movementStep * delta);
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN))
+            direction = UP;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             player.setY(y -= config.movementStep * delta);
+            direction = DOWN;
+        }
+    }
+
+    public String getDirection() {
+        return direction;
     }
 }

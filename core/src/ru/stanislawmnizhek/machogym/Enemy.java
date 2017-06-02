@@ -1,19 +1,27 @@
 package ru.stanislawmnizhek.machogym;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
 public class Enemy extends Macho {
-    private Texture enemyIdle;
     private Random random;
     private float timer = 0f;
+    private Assets assets;
+    private Animation<TextureRegion> enemyIdleAnimation;
+    private Animation<TextureRegion> enemyUpAnimation;
+    private Animation<TextureRegion> enemyDownAnimation;
+    private Animation<TextureRegion> enemyLeftAnimation;
+    private Animation<TextureRegion> enemyRightAnimation;
+    private Animation<TextureRegion> currentAnimation;
     private int xRandom;
     private int yRandom;
 
     public Enemy() {
+        assets = new Assets();
         initAssets();
     }
 
@@ -28,11 +36,18 @@ public class Enemy extends Macho {
     }
 
     private void initAssets() {
-        enemyIdle = new Texture(Gdx.files.internal("player_idle_1.png"));
+        enemyIdleAnimation = new Animation<>(0.35f, assets.getTexture("enemy_idle"));
+        enemyUpAnimation = new Animation<>(0.35f, assets.getTexture("enemy_up"));
+        enemyDownAnimation = new Animation<>(0.35f, assets.getTexture("enemy_down"));
+        enemyLeftAnimation = new Animation<>(0.35f, assets.getTexture("enemy_left"));
+        enemyRightAnimation = new Animation<>(0.35f, assets.getTexture("enemy_right"));
     }
 
-    public Texture getSprite() {
-        return enemyIdle;
+    public Animation<TextureRegion> getAnimation() {
+        if (currentAnimation == null) {
+            currentAnimation = enemyIdleAnimation;
+        }
+        return currentAnimation;
     }
 
     public void handleRandomMoving(float delta) {
@@ -40,6 +55,20 @@ public class Enemy extends Macho {
         if (timer >= 1f) {
             xRandom = random.nextInt(2) - 1;
             yRandom = random.nextInt(2) - 1;
+        }
+
+        if (xRandom > yRandom) {
+           if (xRandom > 0) {
+               currentAnimation = enemyRightAnimation;
+           } else {
+               currentAnimation = enemyLeftAnimation;
+           }
+        } else {
+            if (yRandom > 0) {
+                currentAnimation = enemyUpAnimation;
+            } else {
+                currentAnimation = enemyDownAnimation;
+            }
         }
 
         this.machoRect.x += xRandom;

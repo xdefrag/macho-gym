@@ -7,11 +7,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.TimeUtils;
 
 import java.util.Random;
 
-public class Kosmodoom extends ApplicationAdapter {
+public class Machogym extends ApplicationAdapter {
     private Config config = new Config();
     private Random random = new Random();
     private Control control;
@@ -19,9 +18,11 @@ public class Kosmodoom extends ApplicationAdapter {
     private OrthographicCamera camera;
     private SpriteBatch batch;
     private Player player;
+    private Background background;
     private Array<Enemy> enemies = new Array<>();
     private Array<Coin> coins = new Array<>();
     private int score;
+    private float elapsedTime = 0;
 
     @Override
     public void create() {
@@ -31,6 +32,7 @@ public class Kosmodoom extends ApplicationAdapter {
         batch = new SpriteBatch();
         player = new Player();
         control = new Control();
+        background = new Background();
 
         enemies.add(new Enemy());
 
@@ -43,11 +45,11 @@ public class Kosmodoom extends ApplicationAdapter {
 
     @Override
     public void render() {
-        if (player.isPlayerDead()) {
-            dispose();
-        }
+//        if (player.isPlayerDead()) {
+//            dispose();
+//        }
 
-        Gdx.gl.glClearColor(0, 1, 0, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         camera.update();
@@ -56,15 +58,21 @@ public class Kosmodoom extends ApplicationAdapter {
         batch.begin();
 
         // Machos
+        elapsedTime += Gdx.graphics.getDeltaTime();
+
+        background.drawBackground(batch, elapsedTime);
+
         batch.draw(
-                player.getSprite(),
+                player.getAnimation(control).getKeyFrame(elapsedTime, true),
                 player.getX(), player.getY()
         );
         for (final Enemy enemy : enemies) {
-            batch.draw(enemy.getSprite(), enemy.getX(), enemy.getY());
+            batch.draw(enemy.getAnimation().getKeyFrame(elapsedTime, true),
+                    enemy.getX(), enemy.getY());
         }
         for (final Coin coin : coins) {
-            batch.draw(coin.getSprite(), coin.getX(), coin.getY());
+            batch.draw(coin.getAnimation().getKeyFrame(elapsedTime, true),
+                    coin.getX(), coin.getY());
         }
 
         // UI
@@ -115,10 +123,8 @@ public class Kosmodoom extends ApplicationAdapter {
         }
     }
 
-
     @Override
     public void dispose() {
-        player.dispose();
         batch.dispose();
     }
 }

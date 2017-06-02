@@ -1,34 +1,35 @@
 package ru.stanislawmnizhek.machogym;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
 public class Coin extends Macho {
-    private Texture coin;
-    private Random random;
+    private Animation<TextureRegion> coin;
+    private Assets assets;
 
     public Coin() {
+        assets = new Assets();
         initAssets();
     }
 
     @Override
     protected void initRect() {
-        random = new Random();
+        Random random = new Random();
         this.machoRect = new Rectangle();
         this.machoRect.x = random.nextInt(this.config.width);
         this.machoRect.y = random.nextInt(this.config.height);
-        this.machoRect.width = this.config.spriteRes;
-        this.machoRect.height = this.config.spriteRes;
+        this.machoRect.width = this.config.spriteRes / 2;
+        this.machoRect.height = this.config.spriteRes / 2;
     }
 
     private void initAssets() {
-        coin = new Texture(Gdx.files.internal("player_idle_1.png"));
+        coin = new Animation<>(0.35f, assets.getTexture("protein"));
     }
 
-    public Texture getSprite() {
+    public Animation<TextureRegion> getAnimation() {
         return coin;
     }
 }
