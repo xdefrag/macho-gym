@@ -24,7 +24,7 @@ public class MainMenuScreen implements Screen {
 
 //        layoutTitle = new GlyphLayout(game.font, "MACHO  MACHO  GYM");
         logo = new Animation<TextureRegion>(0, game.assets.getTexture("logo"));
-        layoutInfo = new GlyphLayout(game.font, "PRESS  START");
+        layoutInfo = new GlyphLayout(game.font, "PRESS START");
     }
 
     @Override

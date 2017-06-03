@@ -82,8 +82,8 @@ public class GameScreen implements Screen {
         }
 
         // UI
-        game.font.draw(game.batch, "score  " + game.score, 10, game.config.height - 10);
-        game.font.draw(game.batch, "life  " + player.getLifeAmount(), 10, game.config.height - 20);
+        game.font.draw(game.batch, "Score  " + game.score, 10, game.config.height - 10);
+        game.font.draw(game.batch, "Life  " + player.getLifeAmount(), 10, game.config.height - 20);
         game.batch.end();
 
 
