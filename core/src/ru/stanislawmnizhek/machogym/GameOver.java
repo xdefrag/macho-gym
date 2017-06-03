@@ -23,8 +23,8 @@ public class GameOver implements Screen {
         game.sounds.gameover.play();
 
         layoutInfo = new GlyphLayout(game.font, "YOU WERE TOUCHED");
-        layoutScore = new GlyphLayout(game.font, "Score " + game.score);
-        layoutPress = new GlyphLayout(game.font, "Press start to workout again");
+        layoutScore = new GlyphLayout(game.font, "SCORE " + game.score);
+        layoutPress = new GlyphLayout(game.font, "PRESS START TO WORKOUT AGAIN");
     }
 
     @Override
