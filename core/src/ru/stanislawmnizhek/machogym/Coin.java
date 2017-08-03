@@ -10,10 +10,14 @@ public class Coin extends Macho {
     private Animation<TextureRegion> coin;
     private Assets assets;
 
-    public Coin(Assets assets, Config config) {
+    Coin(Assets assets, Config config) {
         super(config);
         this.assets = assets;
         initAssets();
+    }
+
+    Animation<TextureRegion> getAnimation() {
+        return coin;
     }
 
     @Override
@@ -28,9 +32,5 @@ public class Coin extends Macho {
 
     private void initAssets() {
         coin = new Animation<TextureRegion>(0.35f, assets.getTexture("protein"));
-    }
-
-    public Animation<TextureRegion> getAnimation() {
-        return coin;
     }
 }

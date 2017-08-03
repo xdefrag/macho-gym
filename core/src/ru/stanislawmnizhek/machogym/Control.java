@@ -3,7 +3,7 @@ package ru.stanislawmnizhek.machogym;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
-public class Control {
+class Control {
     private Config config;
     public final String UP = "up";
     public final String DOWN = "down";
@@ -12,11 +12,11 @@ public class Control {
     public final String IDLE = "idle";
     private String direction = IDLE;
 
-    public Control(Config config) {
+    Control(Config config) {
         this.config = config;
     }
 
-    public void handleInput(Player player, float delta) {
+    void handleInput(Player player, float delta) {
         if (player.getLifeAmount() == 0) {
             return;
         }
@@ -42,7 +42,7 @@ public class Control {
         }
     }
 
-    public String getDirection() {
+    String getDirection() {
         return direction;
     }
 }

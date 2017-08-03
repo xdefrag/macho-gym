@@ -8,13 +8,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
 public class GameOver implements Screen {
-    final MachoGym game;
-    OrthographicCamera camera;
+    private final MachoGym game;
+    private OrthographicCamera camera;
     private GlyphLayout layoutInfo;
     private GlyphLayout layoutScore;
     private GlyphLayout layoutPress;
 
-    public GameOver(MachoGym game) {
+    GameOver(MachoGym game) {
         this.game = game;
 
         camera = new OrthographicCamera();

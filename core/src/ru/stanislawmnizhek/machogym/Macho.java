@@ -6,7 +6,7 @@ public class Macho {
     protected Rectangle machoRect;
     protected Config config;
 
-    public Macho(Config config) {
+    Macho(Config config) {
         this.config = config;
         initRect();
     }
@@ -19,7 +19,7 @@ public class Macho {
         machoRect.height = config.spriteRes;
     }
 
-    public void checkXY() {
+    void checkXY() {
         if (machoRect.x < 0) machoRect.x = config.width - config.spriteRes;
         if (machoRect.x > config.width - config.spriteRes) machoRect.x = 0;
         if (machoRect.y < 0) machoRect.y = config.height - config.spriteRes;
@@ -42,7 +42,7 @@ public class Macho {
         machoRect.y = y;
     }
 
-    public Rectangle getMachoRect() {
+    Rectangle getMachoRect() {
         return this.machoRect;
     }
 

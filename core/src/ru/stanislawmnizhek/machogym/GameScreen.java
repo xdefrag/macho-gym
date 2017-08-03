@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import java.util.Random;
 
 public class GameScreen implements Screen {
-    final MachoGym game;
+    private final MachoGym game;
 
     private Random random = new Random();
     private Control control;
@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     private FitViewport viewport;
     private boolean isPlayerDefeated = false;
 
-    public GameScreen(final MachoGym game) {
+    GameScreen(final MachoGym game) {
         this.game = game;
         this.game.score = 0;
 

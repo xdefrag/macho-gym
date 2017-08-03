@@ -4,16 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 
-public class Assets {
+class Assets {
     private TextureAtlas atlas;
 
-    public Assets() {
+    Assets() {
         if (atlas == null) {
             atlas = new TextureAtlas(Gdx.files.internal("machopack.atlas"));
         }
     }
 
-    public Array<TextureAtlas.AtlasRegion> getTexture(String name) {
+    Array<TextureAtlas.AtlasRegion> getTexture(String name) {
         return atlas.findRegions(name);
     }
 }
